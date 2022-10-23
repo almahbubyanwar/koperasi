@@ -1,0 +1,278 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1, h2, h3 {
+    @apply font-bold;
+  }
+  h1 {
+    @apply text-[1.75em];
+  }
+  h2 {
+    @apply text-2xl;
+  }
+  h3 {
+    @apply text-xl;
+  }
+  body {
+    @apply flex flex-row bg-[#121212] text-[#FAFAFA];
+  }
+  main {
+    @apply max-w-full overflow-auto flex-grow-[1] p-6;
+  }
+  table, td {
+    border: 1px solid #FAFAFA;
+    border-collapse: collapse;
+  }
+  th {
+    background-color: #FAFAFA;
+    border: 1px solid #FAFAFA;
+    color: #090909;
+  }
+  th, td {
+    @apply py-2 px-4;
+  }
+}
+
+@layer components {
+  .debug {
+    @apply outline outline-1 outline-red-500;
+  }
+  .bubsbutton {
+    @apply cursor-pointer no-underline bg-[#282828] text-[#FAFAFA] py-[0.1em] px-4 rounded-[10px] border-[2px] border-solid border-[#FAFAFA]
+    hover:bg-[#FAFAFA] hover:text-[#282828] hover:transition-all hover:duration-150 hover:ease-in text-[1em];
+  }
+  .head {
+    @apply flex justify-between items-center mb-4;
+  }
+}
+
+.popupcontainer {
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #000000AA;
+
+  overflow: auto;
+}
+
+.popupcontainer .popup {
+  width: 100vw;
+  max-width: 21em;
+  margin-top: 1rem;
+
+  background-color: #242424;
+  border-radius: 10px;
+}
+
+.popupcontainer .popup .main {
+  max-height: 84vh;
+  overflow-y: auto;
+  padding: 1.25rem;
+}
+
+.popupcontainer .popup .titlebar {
+  padding: 0.75em;
+}
+
+.main h1 {
+  margin-bottom: 0.25em;
+}
+
+#close {
+  width: fit-content;
+  cursor: pointer;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+input {
+  max-width: fit-content;
+}
+
+form > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+}
+
+select {
+  max-width: 21em;
+}
+
+input[type="text"], input[type="password"], input[type="number"] {
+  max-width: 21em;
+  font-size: 1em;
+  padding: 0.25em 0.5em;
+  border: 2px solid #FAFAFA;
+  border-radius: 5px;
+
+  background-color: inherit;
+  color: #FAFAFA;
+
+}
+
+button {
+  width: fit-content;
+}
+
+input[type="text"]:focus {
+  outline: none;
+}
+
+.radios {
+  display: flex;
+  flex-direction: row;
+  column-gap: 1em;
+  row-gap: 0.5em;
+  flex-wrap: wrap;
+}
+
+textarea {
+  background-color: inherit;
+  color: inherit;
+  padding: 0.25em 0.5em;
+
+  border: 2px solid #FAFAFA;
+  border-radius: 10px;
+  resize: vertical;
+  min-height: 1.25em;
+  max-width: 100%;
+
+  font-size: 1em;
+}
+
+.tablecontainer {
+  max-width: 100%;
+  max-height: 15em;
+  overflow: auto;
+}
+
+table {
+  width: max-content;
+  margin: 0 auto;
+  display: inline-block;
+  max-height: 25em;
+}
+
+.alert {
+  display: block;
+  background-color: #EAEAEA;
+  color: #090909;
+  padding: 1rem;
+  margin-bottom: 1em;
+  
+  border-radius: 10px;
+}
+
+ul {
+  margin-left: 1em;
+}
+
+#left {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1em;
+
+  flex-shrink: 0;
+  flex-grow: 0;
+  flex-basis: 18em;
+}
+
+#left #add {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+#left #add div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+}
+
+#left #identity {
+  height: fit-content;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+}
+
+a {
+  color: inherit;
+}
+
+a button, .logo a {
+  text-decoration: none;
+}
+
+select {
+  background-color: #242424;
+  color: #FAFAFA;
+  height: 2rem;
+  border: none;
+  border: 1px solid #FAFAFA;
+  border-radius: 10px;
+  padding: 0.25em 0.5em;
+  font-size: 1em;
+}
+
+option {
+  color: #FAFAFA;
+}
+
+#container, .container {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+}
+
+#right {
+  flex-grow: 1;
+}
+
+.bubsbutton[disabled] {
+  opacity: 0.5;
+  cursor:default;
+}
+
+.bubsbutton[disabled]:hover {
+  color: unset;
+  background-color: unset;
+  transition: none;
+}
+
+input[type='number'] {
+  max-width: 5em;
+}
+
+.message {
+  background-color: #FAFAFA;
+  color: #242424;
+  padding: 0.75rem;
+  border-radius: 10px;
+  margin-bottom: 1em;
+}
+
+#datapinjaman {
+  width: 100%;
+  max-width: 20em;
+}
+
+p, h1, h2, h3 {
+  line-height: 1.25em;
+}

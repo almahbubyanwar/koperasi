@@ -54,6 +54,7 @@
         <div id="tabledisplay">
           <h1>Tabel</h1>
           @if (count($simpanan) > 0) 
+          <div class="tablecontainer">
             <table>
               <thead>
                 <tr>
@@ -88,6 +89,7 @@
               </tbody>
             </table>
           @endif
+        </div>
         </div>
       </div>
     </div>

@@ -9,7 +9,7 @@ class PinjamanDetail extends Model
 {
     use HasFactory;
 
-    protected $table = 'pinjamandetail';
+    protected $table = 'pinjaman_details';
     protected $primarykey = 'idPinjaman';
     
     protected $fillable = [

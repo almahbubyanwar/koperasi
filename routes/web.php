@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\JenisSimpananController;
+use App\Http\Controllers\PinjamanController;
 use App\Http\Controllers\SimpananController;
 use App\Http\Controllers\UserController;
 
@@ -28,6 +29,7 @@ Route::get('/test', function() {
 Route::resource('/anggota', AnggotaController::class);
 Route::resource('/user', UserController::class);
 Route::resource('/jenissimpanan', JenisSimpananController::class);
+Route::resource('/pinjaman', PinjamanController::class);
 
 Route::get('/simpanan', [SimpananController::class, 'index'])->name('simpanan.index');
 Route::get('/simpanan/search/{userId}', [SimpananController::class, 'search'])->name('simpanan.search');

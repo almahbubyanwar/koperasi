@@ -15,10 +15,10 @@ class Pinjaman extends Model
     protected $fillable = [
         'idPinjaman',
         'tanggalPinjaman',
-        'nomorAnggota',
-        'jumlahPinjaman',
-        'lamaPeminjaman',
-        'bungaPinjaman',
+        'noAnggota',
+        'jumlah',
+        'lama',
+        'bunga',
         'userId'
     ];
 }
