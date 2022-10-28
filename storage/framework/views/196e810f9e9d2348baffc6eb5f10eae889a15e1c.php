@@ -86,7 +86,7 @@
         <td><?php echo e($ag->noIdentitas); ?></td>
         <td class="actions">
           <button class="bubsbutton" onclick="edit(<?php echo e($ag->noAnggota); ?>)">Edit</button>
-          <form method="POST" action=<?php echo e(route('anggota.destroy', $ag->noAnggota)); ?> style="display: inline-block;">
+          <form method="POST" action=<?php echo e(route('anggota.destroy', $ag->noAnggota)); ?> class="inline">
             <?php echo csrf_field(); ?>
             <?php echo method_field('DELETE'); ?>
             <button class="bubsbutton" type="submit">Hapus</button>

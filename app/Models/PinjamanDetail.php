@@ -10,9 +10,10 @@ class PinjamanDetail extends Model
     use HasFactory;
 
     protected $table = 'pinjaman_details';
-    protected $primarykey = 'idPinjaman';
+    protected $primarykey = 'idDetail';
     
     protected $fillable = [
+        'idDetail',
         'idPinjaman',
         'cicilan',
         'angsuran',

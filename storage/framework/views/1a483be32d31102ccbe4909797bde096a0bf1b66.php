@@ -60,7 +60,8 @@
             <td><?php echo e($jn->namaJenis); ?></td>
             <td><?php echo e($jn->jumlah); ?></td>
             <td><button id="editButton" class="bubsbutton" onclick="edit(<?php echo e($jn->idJenis); ?>)">Edit</button>
-              <form action="<?php echo e(route('jenissimpanan.destroy', $jn->idJenis)); ?>" method="POST" style="display: inline;">
+              <form action="<?php echo e(route('jenissimpanan.destroy', $jn->idJenis)); ?>" method="POST"
+                class="inline">
                 <?php echo csrf_field(); ?>
                 <?php echo method_field('DELETE'); ?>
                 <button class="bubsbutton" type="submit">Hapus</button>

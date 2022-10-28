@@ -50,7 +50,7 @@
         <td>{{$ag->noIdentitas}}</td>
         <td class="actions">
           <button class="bubsbutton" onclick="edit({{$ag->noAnggota}})">Edit</button>
-          <form method="POST" action={{route('anggota.destroy', $ag->noAnggota)}} style="display: inline-block;">
+          <form method="POST" action={{route('anggota.destroy', $ag->noAnggota)}} class="inline">
             @csrf
             @method('DELETE')
             <button class="bubsbutton" type="submit">Hapus</button>

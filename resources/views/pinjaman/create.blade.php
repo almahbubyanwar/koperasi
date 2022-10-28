@@ -12,7 +12,7 @@
     </div>
     @endif
 
-    <form action={{route('pinjaman.store')}} method="POST">
+    <form action={{route('pinjaman.store')}} method="POST" class="max-w-[20em]">
       @csrf
       <div>
         <label>No. Anggota</label>

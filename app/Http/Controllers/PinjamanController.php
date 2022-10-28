@@ -57,7 +57,7 @@ class PinjamanController extends Controller
         // Logic for details.
         $idPinjaman = $pinjaman->id;
         $angsuran = $request->jumlah / $request->lama;
-        $bunga = $angsuran / 10;
+        $bunga = $angsuran * ($request->bunga / 100);
         $jumlah = $angsuran + $bunga;
 
         for ($i = 1; $i <= $request->lama; $i++) {
@@ -66,13 +66,13 @@ class PinjamanController extends Controller
                 'cicilan' => $i,
                 'angsuran' => $angsuran,
                 'bunga' => $bunga,
-                'jumlahPembayaran' => $jumlah
+                'jumlahPembayaran' => 0
             ]);
             if (!$add) {
                 return redirect()->route('pinjaman.create')->with('status', array('status' => 'Error', 'message' => 'Terjadi kesalahan saat mencoba menambahkan data. Silahkan hubungi admin.'));
             }
         }
-        return redirect()->route('pinjaman.index')->with('status', array('status' => 'Berhasil', 'message' => 'Data berhasil dimasukkan.'));
+        return redirect()->route('pinjaman.show', $idPinjaman)->with('status', array('status' => 'Berhasil', 'message' => 'Data berhasil dimasukkan.'));
     }
 
     /**
@@ -85,9 +85,9 @@ class PinjamanController extends Controller
     {
         $dataPinjaman = Pinjaman::where('idPinjaman', $id)->first();
         $dataAnggota = Anggota::where('noAnggota', $dataPinjaman->noAnggota)->first('namaAnggota');
-        $dataDetail = PinjamanDetail::where('idPinjaman', $id)->first();
+        $dataDetail = PinjamanDetail::where('idPinjaman', $id)->get();
 
-        return view('pinjaman.show', compact('dataPinjaman'), compact('dataAnggota'));
+        return view('pinjaman.show', compact('dataPinjaman', 'dataAnggota', 'dataDetail'));
     }
 
     /**
@@ -121,6 +121,32 @@ class PinjamanController extends Controller
      */
     public function destroy($id)
     {
-        
+        $destroyDetails = PinjamanDetail::where('idPinjaman', $id)->delete();
+        if ($destroyDetails) {
+            $destroyData = Pinjaman::where('idPinjaman', $id)->delete();
+            if ($destroyData) {
+                return redirect()->route('pinjaman.index')->with('status', array('status' => 'Berhasil', 'message' => 'Data berhasil dihapus.'));
+            }
+        }
+        return redirect()->route('pinjaman.index')->with('status', array('status' => 'Error', 'message' => 'Terjadi kesalahan saat mencoba menghapus data. Silahkan hubungi admin.'));
+    }
+
+    public function bayarIndex($id) {
+        $dataPinjaman = Pinjaman::where('idPinjaman', $id)->first();
+        $dataAnggota = Anggota::where('noAnggota', $dataPinjaman->noAnggota)->first('namaAnggota');
+        $dataDetail = PinjamanDetail::where('idPinjaman', $id)->get();
+        return view('pinjaman.pembayaran.index', compact('dataPinjaman', 'dataDetail', 'dataAnggota'));
+    }
+
+    public function bayar($idPinjaman, $idDetail, Request $request) {
+        $bayar = PinjamanDetail::where('idDetail', $idDetail)
+        ->update([
+            'tanggalPembayaran' => $request->tanggalPembayaran ? $request->tanggalPembayaran : date('Y-m-d'),
+            'jumlahPembayaran' => $request->jumlahPembayaran
+        ]);
+        if ($bayar) {
+            return redirect()->route('pembayaran.index', $idPinjaman)->with('status', ['status' => 'Berhasil', 'message' => 'Data berhasil diupdate.']);
+        }
+        return redirect()->route('pembayaran.index', $idPinjaman)->with('status', ['status' => 'Gagal', 'message' => 'Data gagal diupdate.']);
     }
 }

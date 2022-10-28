@@ -41,7 +41,7 @@
           <td>{{$user->name}}</td>
           <td>{{$user->level}}</td>
           <td><button class="bubsbutton" onclick="edit({{$user->userId}})">Edit</button>
-            <form method="POST" action={{route('user.destroy', $user->userId)}} style="display: inline-block;">
+            <form method="POST" action={{route('user.destroy', $user->userId)}} class="inline">
               @csrf
               @method('DELETE')
               <button class="bubsbutton" type="submit">Hapus</button>

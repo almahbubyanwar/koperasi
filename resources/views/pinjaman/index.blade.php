@@ -18,24 +18,29 @@
           <th>No. Pinjaman</th>
           <th>Tanggal</th>
           <th>No. Anggota</th>
-          <th>Lama (bulan)</th>
+          <th>Lama</th>
           <th>Jumlah</th>
           <th>Bunga</th>
-          <th>Jml. Bayar</th>
-          <th>Jml. Cicilan</th>
-          <th>Sisa</th>
-          <th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
         @foreach ($pinjaman as $p)
         <tr>
           <td><a href="{{route('pinjaman.show', $p->idPinjaman)}}">{{$p->idPinjaman}}</a></td>
-          <td>{{$p->tanggalPinjaman}}</td>
+          <td class="min-w-[9rem]">{{$p->tanggalPinjaman}}</td>
           <td>{{$p->noAnggota}}</td>
-          <td>{{$p->lama}}</td>
-          <td>{{$p->jumlah}}</td>
-          <td>{{$p->bunga}}</td>
+          <td class="min-w-[6rem]">{{$p->lama}} bulan</td>
+          <td class="min-w-[10rem]">Rp. {{$p->jumlah}}</td>
+          <td>{{$p->bunga}}%</td>
+          <td class="flex flex-row gap-1 flex-wrap">
+            <form action="{{ route('pinjaman.destroy', $p->idPinjaman) }}" method="POST">
+              @csrf
+              @method('DELETE')
+              <button action="submit" class="bubsbutton">Hapus</button>
+            </form>
+            <a href="{{ route('pembayaran.index', $p->idPinjaman) }}" class="bubsbutton">Bayar</a>
+          </td>
         </tr>
         @endforeach
       </tbody>

@@ -26,24 +26,29 @@
           <th>No. Pinjaman</th>
           <th>Tanggal</th>
           <th>No. Anggota</th>
-          <th>Lama (bulan)</th>
+          <th>Lama</th>
           <th>Jumlah</th>
           <th>Bunga</th>
-          <th>Jml. Bayar</th>
-          <th>Jml. Cicilan</th>
-          <th>Sisa</th>
-          <th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
         <?php $__currentLoopData = $pinjaman; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <tr>
           <td><a href="<?php echo e(route('pinjaman.show', $p->idPinjaman)); ?>"><?php echo e($p->idPinjaman); ?></a></td>
-          <td><?php echo e($p->tanggalPinjaman); ?></td>
+          <td class="min-w-[9rem]"><?php echo e($p->tanggalPinjaman); ?></td>
           <td><?php echo e($p->noAnggota); ?></td>
-          <td><?php echo e($p->lama); ?></td>
-          <td><?php echo e($p->jumlah); ?></td>
-          <td><?php echo e($p->bunga); ?></td>
+          <td class="min-w-[6rem]"><?php echo e($p->lama); ?> bulan</td>
+          <td class="min-w-[10rem]">Rp. <?php echo e($p->jumlah); ?></td>
+          <td><?php echo e($p->bunga); ?>%</td>
+          <td class="flex flex-row gap-1 flex-wrap">
+            <form action="<?php echo e(route('pinjaman.destroy', $p->idPinjaman)); ?>" method="POST">
+              <?php echo csrf_field(); ?>
+              <?php echo method_field('DELETE'); ?>
+              <button action="submit" class="bubsbutton">Hapus</button>
+            </form>
+            <a href="<?php echo e(route('pembayaran.index', $p->idPinjaman)); ?>" class="bubsbutton">Bayar</a>
+          </td>
         </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
       </tbody>

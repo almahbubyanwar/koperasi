@@ -21,18 +21,77 @@
   main {
     @apply max-w-full overflow-auto flex-grow-[1] p-6;
   }
-  table, td {
-    border: 1px solid #FAFAFA;
-    border-collapse: collapse;
+
+  table {
+    margin: 0 auto;
+    display: inline-block;
+    width: fit-content;
+    max-height: 25em;
   }
+
+  td {
+    outline: 1px solid #FAFAFA;
+  }
+  
   th {
     background-color: #FAFAFA;
-    border: 1px solid #FAFAFA;
+    outline: 1px solid #FAFAFA;
     color: #090909;
+    position: sticky;
+    top: 0;
+    z-index: -1;
   }
+  
   th, td {
-    @apply py-2 px-4;
+    padding: 0.5rem 0.75rem;
+    width: fit-content;
+    z-index: 1;
   }
+
+  td {
+    z-index: -2;
+  }
+
+  input[type="text"], input[type="password"], input[type="number"] {
+    font-size: 1rem;
+    padding: 0.1em 0.25em;
+    border: 2px solid #FAFAFA;
+    border-radius: 5px;
+    background-color: inherit;
+    color: #FAFAFA;
+    width: 100%;
+  }
+  input[type="date"] {
+    color: #FAFAFA;
+    border: 2px solid #FAFAFA;
+    background-color: inherit;
+    padding: 0.1em 0.25em;
+    border-radius: 10px;
+  }
+  select {
+    background-color: #242424;
+    color: #FAFAFA;
+    height: 2rem;
+    border: none;
+    border: 1px solid #FAFAFA;
+    border-radius: 10px;
+    padding: 0.25em 0.5em;
+    font-size: 1em;
+  }
+  *::selection {
+    color: #242424;
+    background-color: #FAFAFA;
+  }
+  input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
 }
 
 @layer components {
@@ -46,82 +105,25 @@
   .head {
     @apply flex justify-between items-center mb-4;
   }
-}
-
-.popupcontainer {
-  visibility: hidden;
-  position: fixed;
-  top: 0;
-  min-width: 100vw;
-  min-height: 100vh;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background-color: #000000AA;
-
-  overflow: auto;
-}
-
-.popupcontainer .popup {
-  width: 100vw;
-  max-width: 21em;
-  margin-top: 1rem;
-
-  background-color: #242424;
-  border-radius: 10px;
-}
-
-.popupcontainer .popup .main {
-  max-height: 84vh;
-  overflow-y: auto;
-  padding: 1.25rem;
-}
-
-.popupcontainer .popup .titlebar {
-  padding: 0.75em;
-}
-
-.main h1 {
-  margin-bottom: 0.25em;
-}
-
-#close {
-  width: fit-content;
-  cursor: pointer;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5em;
-}
-
-input {
-  max-width: fit-content;
+  .popupcontainer {
+    @apply invisible fixed top-0 w-screen h-full flex justify-center items-center
+    bg-[#000000AA] overflow-auto z-[2434];
+  }
+  .tablecontainer {
+    @apply w-fit h-fit w-fit max-w-full max-h-[15em] overflow-auto border border-solid;
+  }
+  .message {
+    @apply bg-[#FAFAFA] text-[#242424] p-3 rounded-[10px] mb-4;
+  }
+  .box {
+    @apply p-5 bg-[#242424] rounded-[10px] w-fit max-w-full;
+  }
 }
 
 form > div {
   display: flex;
   flex-direction: column;
   gap: 0.25em;
-}
-
-select {
-  max-width: 21em;
-}
-
-input[type="text"], input[type="password"], input[type="number"] {
-  max-width: 21em;
-  font-size: 1em;
-  padding: 0.25em 0.5em;
-  border: 2px solid #FAFAFA;
-  border-radius: 5px;
-
-  background-color: inherit;
-  color: #FAFAFA;
-
 }
 
 button {
@@ -154,19 +156,6 @@ textarea {
   font-size: 1em;
 }
 
-.tablecontainer {
-  max-width: 100%;
-  max-height: 15em;
-  overflow: auto;
-}
-
-table {
-  width: max-content;
-  margin: 0 auto;
-  display: inline-block;
-  max-height: 25em;
-}
-
 .alert {
   display: block;
   background-color: #EAEAEA;
@@ -181,37 +170,6 @@ ul {
   margin-left: 1em;
 }
 
-#left {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  gap: 1em;
-
-  flex-shrink: 0;
-  flex-grow: 0;
-  flex-basis: 18em;
-}
-
-#left #add {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5em;
-}
-
-#left #add div {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25em;
-}
-
-#left #identity {
-  height: fit-content;
-
-  display: flex;
-  flex-direction: column;
-  gap: 0.25em;
-}
-
 a {
   color: inherit;
 }
@@ -220,25 +178,8 @@ a button, .logo a {
   text-decoration: none;
 }
 
-select {
-  background-color: #242424;
-  color: #FAFAFA;
-  height: 2rem;
-  border: none;
-  border: 1px solid #FAFAFA;
-  border-radius: 10px;
-  padding: 0.25em 0.5em;
-  font-size: 1em;
-}
-
 option {
   color: #FAFAFA;
-}
-
-#container, .container {
-  display: flex;
-  flex-direction: row;
-  gap: 1em;
 }
 
 #right {
@@ -254,23 +195,6 @@ option {
   color: unset;
   background-color: unset;
   transition: none;
-}
-
-input[type='number'] {
-  max-width: 5em;
-}
-
-.message {
-  background-color: #FAFAFA;
-  color: #242424;
-  padding: 0.75rem;
-  border-radius: 10px;
-  margin-bottom: 1em;
-}
-
-#datapinjaman {
-  width: 100%;
-  max-width: 20em;
 }
 
 p, h1, h2, h3 {

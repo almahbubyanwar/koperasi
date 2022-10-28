@@ -24,7 +24,8 @@
             <td>{{$jn->namaJenis}}</td>
             <td>{{$jn->jumlah}}</td>
             <td><button id="editButton" class="bubsbutton" onclick="edit({{$jn->idJenis}})">Edit</button>
-              <form action="{{route('jenissimpanan.destroy', $jn->idJenis)}}" method="POST" style="display: inline;">
+              <form action="{{route('jenissimpanan.destroy', $jn->idJenis)}}" method="POST"
+                class="inline">
                 @csrf
                 @method('DELETE')
                 <button class="bubsbutton" type="submit">Hapus</button>

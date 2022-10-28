@@ -20,7 +20,7 @@
     </div>
     <?php endif; ?>
 
-    <form action=<?php echo e(route('pinjaman.store')); ?> method="POST">
+    <form action=<?php echo e(route('pinjaman.store')); ?> method="POST" class="max-w-[20em]">
       <?php echo csrf_field(); ?>
       <div>
         <label>No. Anggota</label>

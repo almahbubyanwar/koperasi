@@ -77,7 +77,7 @@
           <td><?php echo e($user->name); ?></td>
           <td><?php echo e($user->level); ?></td>
           <td><button class="bubsbutton" onclick="edit(<?php echo e($user->userId); ?>)">Edit</button>
-            <form method="POST" action=<?php echo e(route('user.destroy', $user->userId)); ?> style="display: inline-block;">
+            <form method="POST" action=<?php echo e(route('user.destroy', $user->userId)); ?> class="inline">
               <?php echo csrf_field(); ?>
               <?php echo method_field('DELETE'); ?>
               <button class="bubsbutton" type="submit">Hapus</button>

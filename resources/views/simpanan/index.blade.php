@@ -8,10 +8,10 @@
       <p>{{session('status')}}</p>
     </div>
     @endif
-    <div id="container">
-      <div id="left">
-        <div id="add">
-          <form action={{ route('simpanan.store') }} method="POST">
+    <div id="container" class="flex flex-row gap-4">
+      <div class="flex flex-col flex-wrap gap-4 flex-grow-0 flex-shrink-0 basis-[19em]"> 
+        <div id="add" class="w-full flex flex-column gap-2 box">
+          <form action={{ route('simpanan.store') }} method="POST" >
             @csrf
             <div>
               <label for="nomorAnggota">No. Anggota</label>
@@ -42,7 +42,7 @@
             </div>
           </form>
         </div>
-        <div id="identity">
+        <div class="h-fit flex flex-col gap-1 box">
           <p id="namaOutput">Nama: </p>
           <p id="jenisKelaminOutput">Jenis Kelamin: </p>
           <p id="tglLahirOutput">TTL: </p>
@@ -50,12 +50,12 @@
           <button id="cari" class="bubsbutton" disabled>Cari</button>
         </div>
       </div>
-      <div id="right">
-        <div id="tabledisplay">
+      <div class="max-w-full">
+        <div class="box">
           <h1>Tabel</h1>
           @if (count($simpanan) > 0) 
           <div class="tablecontainer">
-            <table>
+            <table class="w-fit">
               <thead>
                 <tr>
                   <th>ID</th>
@@ -71,14 +71,14 @@
                 @foreach ($simpanan as $simp)
                 <tr>
                   <td>{{ $simp->idSimpanan }}</td>
-                  <td>{{ $simp->tanggal }}</td>
+                  <td class="min-w-[5rem]">{{ $simp->tanggal }}</td>
                   <td>{{ $simp->noAnggota }}</td>
                   <td>{{ $simp->idJenis }}</td>
                   <td>{{ $simp->jumlah }}</td>
                   <td>{{ $simp->userId }}</td>
                   <td>
                     <form action="{{route('simpanan.destroy', $simp->idSimpanan)}}" method="POST"
-                      style="display: inline-block;">
+                      class="inline-block">
                       @csrf
                       @method('DELETE')
                       <button type="submit" class="bubsbutton">Hapus</button>

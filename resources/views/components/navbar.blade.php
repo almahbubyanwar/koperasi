@@ -5,8 +5,9 @@
       <p><a href="/anggota">Anggota</a></p>
       <p><a href="/user">User</a></p>
       <p><a href="/jenissimpanan">Jenis Simpanan</a></p>
-      <h2>Transaksi</h2>
+      <h2 class="mt-2">Transaksi</h2>
       <p><a href="/simpanan">Simpanan</a></p>
+      <p><a href="/pengambilan">Pengambilan</a></p>
       <p><a href="/pinjaman">Pinjaman</a></p>
    </nav>
 </div>
