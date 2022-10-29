@@ -42,7 +42,7 @@
             </div>
           </form>
         </div>
-        <div class="h-fit flex flex-col gap-1 box">
+        <div class="h-fit flex flex-col gap-1 box w-full">
           <p id="namaOutput">Nama: </p>
           <p id="jenisKelaminOutput">Jenis Kelamin: </p>
           <p id="tglLahirOutput">TTL: </p>
@@ -50,8 +50,7 @@
           <button id="cari" class="bubsbutton" disabled>Cari</button>
         </div>
       </div>
-      <div class="max-w-full">
-        <div class="box">
+      <div class="box w-full max-w-full h-fit">
           <h1>Tabel</h1>
           @if (count($simpanan) > 0) 
           <div class="tablecontainer">
@@ -63,7 +62,6 @@
                   <th>No. <br>Anggota</th>
                   <th>Jenis</th>
                   <th>Jumlah</th>
-                  <th>ID User</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -73,9 +71,8 @@
                   <td>{{ $simp->idSimpanan }}</td>
                   <td class="min-w-[5rem]">{{ $simp->tanggal }}</td>
                   <td>{{ $simp->noAnggota }}</td>
-                  <td>{{ $simp->idJenis }}</td>
-                  <td>{{ $simp->jumlah }}</td>
-                  <td>{{ $simp->userId }}</td>
+                  <td>{{ $simp->namaJenis }}</td>
+                  <td>Rp. {{ $simp->jumlah }}</td>
                   <td>
                     <form action="{{route('simpanan.destroy', $simp->idSimpanan)}}" method="POST"
                       class="inline-block">
@@ -89,7 +86,6 @@
               </tbody>
             </table>
           @endif
-        </div>
         </div>
       </div>
     </div>

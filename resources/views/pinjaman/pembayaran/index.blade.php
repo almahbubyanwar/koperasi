@@ -29,6 +29,7 @@
                 <th>Total</th>
                 <th>Tgl. Bayar</th>
                 <th>Jml. Terbayar</th>
+                <th>Sisa</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -49,6 +50,9 @@
                 <td>
                   <input type="number" id="jumlahTerbayar" name="jumlahPembayaran" 
                   class="max-w-fit" value="{{$det->jumlahPembayaran}}"/>
+                </td>
+                <td>
+                  {{($det->angsuran + $det->bunga) - $det->jumlahPembayaran}}
                 </td>
                 <td>
                   <button action="submit" class="bubsbutton">Tambah</button>

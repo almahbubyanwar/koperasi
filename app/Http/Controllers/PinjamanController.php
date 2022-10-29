@@ -6,6 +6,7 @@ use App\Models\Anggota;
 use App\Models\Pinjaman;
 use Illuminate\Http\Request;
 use App\Models\PinjamanDetail;
+use Illuminate\Support\Facades\DB;
 
 class PinjamanController extends Controller
 {
@@ -16,7 +17,12 @@ class PinjamanController extends Controller
      */
     public function index()
     {
-        $pinjaman = Pinjaman::all();
+        $pinjaman = DB::table('pinjaman')
+        ->rightJoin('pinjaman_details', 'pinjaman.idPinjaman', '=', 'pinjaman_details.idPinjaman')
+        ->select('pinjaman.*', DB::raw('SUM(pinjaman_details.jumlahPembayaran) AS totalTerbayar'))
+        ->groupBy('idPinjaman')
+        ->get();
+        ;
         return view('pinjaman.index', compact('pinjaman'));
     }
 

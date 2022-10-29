@@ -29,18 +29,26 @@
           <th>Lama</th>
           <th>Jumlah</th>
           <th>Bunga</th>
+          <th>Jumlah + Bunga</th>
+          <th>Total Terbayar</th>
+          <th>Sisa</th>
           <th>Action</th>
         </tr>
       </thead>
       <tbody>
         <?php $__currentLoopData = $pinjaman; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <tr>
+          <?php ($jumlahBunga = $p->jumlah + ($p->jumlah * $p->bunga / 100)); ?>
+          <?php ($totalBayar = $jumlahBunga - $p->totalTerbayar); ?>
           <td><a href="<?php echo e(route('pinjaman.show', $p->idPinjaman)); ?>"><?php echo e($p->idPinjaman); ?></a></td>
           <td class="min-w-[9rem]"><?php echo e($p->tanggalPinjaman); ?></td>
           <td><?php echo e($p->noAnggota); ?></td>
           <td class="min-w-[6rem]"><?php echo e($p->lama); ?> bulan</td>
-          <td class="min-w-[10rem]">Rp. <?php echo e($p->jumlah); ?></td>
+          <td class="min-w-[8rem]">Rp. <?php echo e($p->jumlah); ?></td>
           <td><?php echo e($p->bunga); ?>%</td>
+          <td class="min-w-[9rem]">Rp. <?php echo e($jumlahBunga); ?>,-</td>
+          <td class="min-w-[8rem]">Rp. <?php echo e($p->totalTerbayar); ?>,-</td>
+          <td class="min-w-[8rem]">Rp. <?php echo e(($totalBayar > 0) ? $totalBayar : 0); ?>,-</td>
           <td class="flex flex-row gap-1 flex-wrap">
             <form action="<?php echo e(route('pinjaman.destroy', $p->idPinjaman)); ?>" method="POST">
               <?php echo csrf_field(); ?>

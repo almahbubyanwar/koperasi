@@ -50,7 +50,7 @@
             </div>
           </form>
         </div>
-        <div class="h-fit flex flex-col gap-1 box">
+        <div class="h-fit flex flex-col gap-1 box w-full">
           <p id="namaOutput">Nama: </p>
           <p id="jenisKelaminOutput">Jenis Kelamin: </p>
           <p id="tglLahirOutput">TTL: </p>
@@ -58,8 +58,7 @@
           <button id="cari" class="bubsbutton" disabled>Cari</button>
         </div>
       </div>
-      <div class="max-w-full">
-        <div class="box">
+      <div class="box w-full max-w-full h-fit">
           <h1>Tabel</h1>
           <?php if(count($simpanan) > 0): ?> 
           <div class="tablecontainer">
@@ -71,7 +70,6 @@
                   <th>No. <br>Anggota</th>
                   <th>Jenis</th>
                   <th>Jumlah</th>
-                  <th>ID User</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -81,9 +79,8 @@
                   <td><?php echo e($simp->idSimpanan); ?></td>
                   <td class="min-w-[5rem]"><?php echo e($simp->tanggal); ?></td>
                   <td><?php echo e($simp->noAnggota); ?></td>
-                  <td><?php echo e($simp->idJenis); ?></td>
-                  <td><?php echo e($simp->jumlah); ?></td>
-                  <td><?php echo e($simp->userId); ?></td>
+                  <td><?php echo e($simp->namaJenis); ?></td>
+                  <td>Rp. <?php echo e($simp->jumlah); ?></td>
                   <td>
                     <form action="<?php echo e(route('simpanan.destroy', $simp->idSimpanan)); ?>" method="POST"
                       class="inline-block">
@@ -97,7 +94,6 @@
               </tbody>
             </table>
           <?php endif; ?>
-        </div>
         </div>
       </div>
     </div>

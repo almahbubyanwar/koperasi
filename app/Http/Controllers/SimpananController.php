@@ -10,7 +10,8 @@ class SimpananController extends Controller
 {
     public function index() {
         $jenis = JenisSimpanan::select('idJenis', 'namaJenis')->get();
-        $simpanan = Simpanan::get();
+        $simpanan = Simpanan::join('jenis_simpanan', 'simpanan.idJenis', '=', 'jenis_simpanan.idJenis')
+        ->select('simpanan.*', 'jenis_simpanan.namaJenis')->get();
         return view('simpanan.index', compact('jenis', 'simpanan'));
     }
 

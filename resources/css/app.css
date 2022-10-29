@@ -46,6 +46,7 @@
     padding: 0.5rem 0.75rem;
     width: fit-content;
     z-index: 1;
+    height: fit-content;
   }
 
   td {
@@ -110,7 +111,7 @@ input[type=number] {
     bg-[#000000AA] overflow-auto z-[2434];
   }
   .tablecontainer {
-    @apply w-fit h-fit w-fit max-w-full max-h-[15em] overflow-auto border border-solid;
+    @apply w-fit h-fit max-w-full max-h-[15em] overflow-auto border border-solid;
   }
   .message {
     @apply bg-[#FAFAFA] text-[#242424] p-3 rounded-[10px] mb-4;

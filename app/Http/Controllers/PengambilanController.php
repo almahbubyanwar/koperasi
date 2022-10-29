@@ -15,7 +15,7 @@ class PengambilanController extends Controller
         
     }
     public function search($idAnggota) {
-        $search = Simpanan::where('idAnggota', $idAnggota)->get();
+        $search = Simpanan::where('noAnggota', $idAnggota)->get();
         return view('pengambilan.index', compact($search));
     }
 }

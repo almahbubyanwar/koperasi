@@ -21,18 +21,26 @@
           <th>Lama</th>
           <th>Jumlah</th>
           <th>Bunga</th>
+          <th>Jumlah + Bunga</th>
+          <th>Total Terbayar</th>
+          <th>Sisa</th>
           <th>Action</th>
         </tr>
       </thead>
       <tbody>
         @foreach ($pinjaman as $p)
         <tr>
+          @php ($jumlahBunga = $p->jumlah + ($p->jumlah * $p->bunga / 100))
+          @php ($totalBayar = $jumlahBunga - $p->totalTerbayar)
           <td><a href="{{route('pinjaman.show', $p->idPinjaman)}}">{{$p->idPinjaman}}</a></td>
           <td class="min-w-[9rem]">{{$p->tanggalPinjaman}}</td>
           <td>{{$p->noAnggota}}</td>
           <td class="min-w-[6rem]">{{$p->lama}} bulan</td>
-          <td class="min-w-[10rem]">Rp. {{$p->jumlah}}</td>
+          <td class="min-w-[8rem]">Rp. {{$p->jumlah}}</td>
           <td>{{$p->bunga}}%</td>
+          <td class="min-w-[9rem]">Rp. {{$jumlahBunga}},-</td>
+          <td class="min-w-[8rem]">Rp. {{$p->totalTerbayar}},-</td>
+          <td class="min-w-[8rem]">Rp. {{($totalBayar > 0) ? $totalBayar : 0}},-</td>
           <td class="flex flex-row gap-1 flex-wrap">
             <form action="{{ route('pinjaman.destroy', $p->idPinjaman) }}" method="POST">
               @csrf
