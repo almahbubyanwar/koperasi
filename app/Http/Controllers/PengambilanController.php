@@ -42,25 +42,23 @@ class PengambilanController extends Controller
             'jumlah' => 'required'
         ]);
         
-        $dec = Simpanan::where('noAnggota', $request->noAnggota)
-        ->where('idJenis', $request->idJenis)
-        ->decrement('jumlah', $request->jumlah);
+        // $dec = Simpanan::where('noAnggota', $request->noAnggota)
+        // ->where('idJenis', $request->idJenis)
+        // ->decrement('jumlah', $request->jumlah);
 
-        if ($dec) {
-            $create = Pengambilan::create([
-                'tanggalPengambilan' => $request->tanggalPengambilan ? $request->tanggalPengambilan : date("Y-m-d"),
-                'noAnggota' => $request->noAnggota,
-                'jumlah' => $request->jumlah,
-                'userId' => 1
-            ]);
-            if ($create) {
-                return redirect()->route('pengambilan.search', $request->noAnggota)->with('status', 
-                array('status' => 'Berhasil', 'message' => 'Data berhasil dimassukan.'));
-            }
-            return redirect()->route('pengambilan.index')->with('status', 
-            array('status' => 'Gagal', 'message' => 'Kegagalan dalam menambahkan pengambilan. Silahkan hubungi admin.'));
+
+        $create = Pengambilan::create([
+            'tanggalPengambilan' => $request->tanggalPengambilan ? $request->tanggalPengambilan : date("Y-m-d"),
+            'noAnggota' => $request->noAnggota,
+            'jumlah' => $request->jumlah,
+            'userId' => 1
+        ]);
+        
+        if ($create) {
+            return redirect()->route('pengambilan.search', $request->noAnggota)->with('status', 
+            array('status' => 'Berhasil', 'message' => 'Data berhasil dimassukan.'));
         }
         return redirect()->route('pengambilan.index')->with('status', 
-        array('status' => 'Gagal', 'message' => 'Kegagalan dalam proses pengambilan. Silahkan hubungi admin.'));
+        array('status' => 'Gagal', 'message' => 'Kegagalan dalam menambahkan pengambilan. Silahkan hubungi admin.'));
     }
 }

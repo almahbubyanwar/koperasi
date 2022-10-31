@@ -12,7 +12,7 @@
     <div class="box w-full max-w-[20rem]">
       <h1>Login</h1>
       <x-status />
-      <form action="{{route('login')}}" method="POST">
+      <form action="/login" method="POST">
         @csrf
         <div>
           <label for="name">Username</label>

@@ -26,7 +26,7 @@
 <?php $component = $__componentOriginal2db42a9094af8c45b35737ea3527d3c0817d84c4; ?>
 <?php unset($__componentOriginal2db42a9094af8c45b35737ea3527d3c0817d84c4); ?>
 <?php endif; ?>
-      <form action="<?php echo e(route('login')); ?>" method="POST">
+      <form action="/login" method="POST">
         <?php echo csrf_field(); ?>
         <div>
           <label for="name">Username</label>
