@@ -35,7 +35,8 @@
               </select>
             </div>
             <div>
-              <p id="jumlah">Jumlah: </p>
+              <label for="jumlah">Jumlah</label>
+              <input type="text" id="jumlah" name="jumlah" />
             </div>
             <div>
               <button type="submit" class="bubsbutton">Tambah</button>
@@ -50,9 +51,9 @@
           <button id="cari" class="bubsbutton" disabled>Cari</button>
         </div>
       </div>
+      @if (count($simpanan) > 0) 
       <div class="box w-full max-w-full h-fit">
           <h1>Tabel</h1>
-          @if (count($simpanan) > 0) 
           <div class="tablecontainer">
             <table class="w-fit">
               <thead>
@@ -133,7 +134,7 @@
       if (response.ok) {
         const json = await response.json();
         const jumlahField = document.getElementById('jumlah');
-        jumlahField.innerText = "Jumlah: " + json.jumlah;
+        jumlahField.value = json.jumlah;
       }
       else {
         console.log('oh nyo!');

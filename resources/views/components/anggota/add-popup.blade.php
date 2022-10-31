@@ -8,7 +8,7 @@
       </div>
       <div>
         <label for="jenisKelamin">Gender</label>
-        <div class="radios">
+        <div class="flex flex-row flex-wrap gap-x-4">
           <div>
             <input type="radio" name="jenisKelamin" id="lakilaki" value="Laki-laki">
             <label for="lakilaki">Laki-laki</label>
@@ -37,7 +37,10 @@
       </div>
       <div>
         <label for="noTelepon">No. Telepon</label>
-        <input type="text" id="noTelepon" name="noTelepon">
+        <div class="h-fit flex flex-row items-center gap-2">
+          <p>+62</p>
+          <input type="text" id="noTelepon" name="noTelepon">
+        </div>
       </div>
       <div>
         <label for="noId">No. Identitas</label>

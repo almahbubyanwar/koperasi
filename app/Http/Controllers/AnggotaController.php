@@ -45,7 +45,15 @@ class AnggotaController extends Controller
             'noIdentitas' => 'required',
             'pwd' => 'required'
         ]);
-        Anggota::create($request->all());
+        Anggota::create([
+            'namaAnggota' => $request->namaAnggota,
+            'tempatLahir' => $request->tempatLahir,
+            'tanggalLahir' => $request->tanggalLahir,
+            'alamat' => $request->alamat,
+            'noTelepon' => '62' . $request->noTelepon,
+            'noIdentitas' => $request->noIdentitas,
+            'pwd' => $request->pwd
+        ]);
         return redirect()->route('anggota.index')->with('status', 'Data berhasil diinput.');
     }
 

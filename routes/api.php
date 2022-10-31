@@ -3,6 +3,7 @@
 use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\JenisSimpananController;
+use App\Http\Controllers\SimpananController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,3 +25,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/anggota/getData/{id}', [AnggotaController::class, 'getData']);
 Route::get('/user/getData/{id}', [UserController::class, 'getData']);
 Route::get('/jenissimpanan/getData/{id}', [JenisSimpananController::class, 'getData']);
+Route::get('/simpanan/getJenis/{noAnggota}', [SimpananController::class, 'getJenis']);

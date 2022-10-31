@@ -46,7 +46,7 @@
         <td>{{$ag->tempatLahir}}</td>
         <td>{{$ag->tanggalLahir}}</td>
         <td>{{$ag->alamat}}</td>
-        <td>{{$ag->noTelepon}}</td>
+        <td>+{{$ag->noTelepon}}</td>
         <td>{{$ag->noIdentitas}}</td>
         <td class="actions">
           <button class="bubsbutton" onclick="edit({{$ag->noAnggota}})">Edit</button>

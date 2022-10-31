@@ -16,10 +16,30 @@
     @apply text-xl;
   }
   body {
+    min-height: 100vh;
     @apply flex flex-row bg-[#121212] text-[#FAFAFA];
   }
   main {
     @apply max-w-full overflow-auto flex-grow-[1] p-6;
+  }
+
+  ul, ol {
+    list-style: revert;
+    line-height: 1em;
+  }
+
+  li {
+    margin-left: 1em;
+  }
+
+  li::marker {
+    font-size: 1em;
+  }
+
+  form:has(div) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
   }
 
   table {
@@ -55,7 +75,7 @@
 
   input[type="text"], input[type="password"], input[type="number"] {
     font-size: 1rem;
-    padding: 0.1em 0.25em;
+    padding: 0.25em 0.5em;
     border: 2px solid #FAFAFA;
     border-radius: 5px;
     background-color: inherit;
@@ -114,7 +134,7 @@ input[type=number] {
     @apply w-fit h-fit max-w-full max-h-[15em] overflow-auto border border-solid;
   }
   .message {
-    @apply bg-[#FAFAFA] text-[#242424] p-3 rounded-[10px] mb-4;
+    @apply bg-[#FAFAFA] text-[#242424] p-2 rounded-[10px] mt-2 mb-2;
   }
   .box {
     @apply p-5 bg-[#242424] rounded-[10px] w-fit max-w-full;
@@ -124,7 +144,6 @@ input[type=number] {
 form > div {
   display: flex;
   flex-direction: column;
-  gap: 0.25em;
 }
 
 button {
@@ -133,14 +152,6 @@ button {
 
 input[type="text"]:focus {
   outline: none;
-}
-
-.radios {
-  display: flex;
-  flex-direction: row;
-  column-gap: 1em;
-  row-gap: 0.5em;
-  flex-wrap: wrap;
 }
 
 textarea {
@@ -165,10 +176,6 @@ textarea {
   margin-bottom: 1em;
   
   border-radius: 10px;
-}
-
-ul {
-  margin-left: 1em;
 }
 
 a {

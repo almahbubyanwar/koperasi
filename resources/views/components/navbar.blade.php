@@ -9,5 +9,13 @@
       <p><a href="/simpanan">Simpanan</a></p>
       <p><a href="/pengambilan">Pengambilan</a></p>
       <p><a href="/pinjaman">Pinjaman</a></p>
+      <h2 class="mt-2">User</h2>
+      <form action="/logout" method="POST">
+         @csrf
+         <button type="submit" class="bubsbutton">
+            Log Out
+         </button>
+      </form>
+      {{-- <p>Current user: {{ auth()->user()->name }}</p> --}}
    </nav>
 </div>

@@ -32,7 +32,7 @@
         <tr>
           @php ($jumlahBunga = $p->jumlah + ($p->jumlah * $p->bunga / 100))
           @php ($totalBayar = $jumlahBunga - $p->totalTerbayar)
-          <td><a href="{{route('pinjaman.show', $p->idPinjaman)}}">{{$p->idPinjaman}}</a></td>
+          <td><a href="{{route('pinjaman.show', $p->idPinjaman)}}" class="underline">{{$p->idPinjaman}}</a></td>
           <td class="min-w-[9rem]">{{$p->tanggalPinjaman}}</td>
           <td>{{$p->noAnggota}}</td>
           <td class="min-w-[6rem]">{{$p->lama}} bulan</td>
